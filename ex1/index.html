@@ -1,0 +1,68 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ex1</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style>
+    body {
+        margin-top: 50px;
+    }
+    </style>
+</head>
+
+<body ng-app="cepApp">
+    <div class="container">
+        <div class="col-md-12">
+            <div ng-controller="AppCtrl">
+                <form class="form-inline" style="margin-bottom: 20px;">
+                    <div class="form-group">
+                        <label for="cep"></label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="cep"
+                            placeholder="CEP"
+                            ng-model="inCep"
+                            ng-model-options="{ updateOn: 'change' }"
+                            ng-disabled="searchStatus"/>
+                    </div>
+                    <button type="button" class="btn btn-default" ng-click="searchCep()" ng-disabled="searchStatus">{{ searchState }}</button>
+                </form>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Logradouro</th>
+                            <th>Bairro</th>
+                            <th>Localidade</th>
+                            <th>UF</th>
+                            <th>CEP</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="cep in ceps">
+                            <td>
+                                {{cep.logradouro}}
+                            </td>
+                            <td>
+                                {{cep.bairro}}
+                            </td>
+                            <td>
+                                {{cep.localidade}}
+                            </td>
+                            <td>
+                                {{cep.uf}}
+                            </td>
+                            <td>
+                                {{cep.cep}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="/static/js/app.js"></script>
+</body>
+
+</html>
